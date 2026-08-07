@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VIXAMA — Portfolio Identity Kit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1A202C;
+    --text: #EDF2F7;
+    --main: #2D3748;
+    --accent: #3182CE;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .page{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 72px 40px 96px;
+  }
+  .eyebrow{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 20px;
+  }
+  .logo{
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(40px, 7vw, 72px);
+    letter-spacing: 0.22em;
+    margin: 0 0 8px;
+    padding-left: 0.22em; /* balances tracking-induced right drift */
+  }
+  .tagline{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: rgba(237,242,247,0.55);
+    margin: 0 0 64px;
+  }
+  h2{
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(237,242,247,0.5);
+    margin: 0 0 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--main);
+  }
+  section{
+    margin-bottom: 56px;
+  }
+
+  /* Typography section */
+  .type-row{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--main);
+  }
+  .type-row:last-child{ border-bottom: none; }
+  .type-role{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    width: 140px;
+    flex-shrink: 0;
+  }
+  .type-sample{
+    flex: 1;
+    font-size: 28px;
+  }
+  .type-sample.mono{ font-family: 'Roboto Mono', monospace; font-weight: 500; }
+  .type-sample.sans{ font-family: 'Roboto', sans-serif; font-weight: 400; }
+  .type-name{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: rgba(237,242,247,0.45);
+    width: 170px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* Palette section */
+  .palette{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--main);
+    border: 1px solid var(--main);
+  }
+  .swatch{
+    background: var(--bg);
+    padding: 24px 18px 18px;
+  }
+  .swatch-fill{
+    height: 64px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(237,242,247,0.08);
+  }
+  .swatch-label{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: rgba(237,242,247,0.55);
+    margin: 0 0 6px;
+  }
+  .swatch-hex{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* Logo section */
+  .logo-block{
+    background: var(--main);
+    border-radius: 4px;
+    padding: 56px 40px;
+    text-align: center;
+  }
+  .logo-mark{
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 48px);
+    letter-spacing: 0.4em;
+    margin: 0 0 24px;
+    padding-left: 0.4em;
+  }
+  .logo-caption{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(237,242,247,0.5);
+    margin: 0 0 40px;
+  }
+  .favicon-row{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+  }
+  .favicon{
+    width: 40px;
+    height: 40px;
+    background: var(--bg);
+    border: 1px solid rgba(237,242,247,0.12);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--accent);
+  }
+  .favicon-note{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    color: rgba(237,242,247,0.4);
+  }
+
+  /* Style note section */
+  .style-note{
+    border-left: 2px solid var(--accent);
+    padding: 4px 0 4px 24px;
+  }
+  .style-note p{
+    margin: 0 0 14px;
+    font-size: 15px;
+  }
+  .style-note p:last-child{ margin-bottom: 0; }
+  .style-note .label{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-right: 10px;
+  }
+  .style-note code{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    background: var(--main);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  .mood{
+    font-style: italic;
+    color: rgba(237,242,247,0.8);
+  }
+
+  footer{
+    margin-top: 72px;
+    padding-top: 24px;
+    border-top: 1px solid var(--main);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: rgba(237,242,247,0.35);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 600px){
+    .page{ padding: 48px 20px 64px; }
+    .type-row{ flex-direction: column; align-items: flex-start; gap: 10px; }
+    .type-name{ width: auto; text-align: left; }
+    .palette{ grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <p class="eyebrow">Portfolio Identity Kit</p>
+  <h1 class="logo">V I X A M A</h1>
+  <p class="tagline">A focused, high-contrast dark identity where the work stays the loudest thing on the page.</p>
+
+  <section>
+    <h2>01 — Typography</h2>
+    <div class="type-row">
+      <span class="type-role">Heading</span>
+      <span class="type-sample mono">Vixama Case Studies</span>
+      <span class="type-name">Roboto Mono</span>
+    </div>
+    <div class="type-row">
+      <span class="type-role">Body</span>
+      <span class="type-sample sans">Vixama Case Studies</span>
+      <span class="type-name">Roboto</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>02 — Color Palette</h2>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#1A202C;"></div>
+        <p class="swatch-label">Background — Deep Abyss</p>
+        <p class="swatch-hex">#1A202C</p>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#EDF2F7;"></div>
+        <p class="swatch-label">Text — Off-White</p>
+        <p class="swatch-hex">#EDF2F7</p>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#2D3748;"></div>
+        <p class="swatch-label">Main — Charcoal Gray</p>
+        <p class="swatch-hex">#2D3748</p>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#3182CE;"></div>
+        <p class="swatch-label">Accent — Electric Blue</p>
+        <p class="swatch-hex">#3182CE</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>03 — Logo / Monogram</h2>
+    <div class="logo-block">
+      <p class="logo-mark">VIXAMA</p>
+      <p class="logo-caption">Set in Roboto Mono, wide tracking, no ornament</p>
+      <div class="favicon-row">
+        <div class="favicon">V</div>
+        <span class="favicon-note">Favicon fallback — single monogram letter, same mark, same tracking logic</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>04 — Style Note</h2>
+    <div class="style-note">
+      <p><span class="label">Type</span>Roboto Mono for headings, Roboto for body.</p>
+      <p><span class="label">Palette</span>Background <code>#1A202C</code>, Text <code>#EDF2F7</code>, Main <code>#2D3748</code>, Accent <code>#3182CE</code>.</p>
+      <p class="mood"><span class="label">Mood</span>A focused, high-contrast dark aesthetic designed for a modern, tech-forward presentation where the work remains the center of attention.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>VIXAMA</span>
+    <span>Identity Kit — v1.0</span>
+  </footer>
+
+</div>
+</body>
+</html>
